@@ -1,26 +1,28 @@
 export function countryСard({ flags, name, capital, population, languages }) {
   return `
-      <div>
+      <div class="country-card">
         <div>
-          <imgsrc="${flags.svg}" alt="${name.official}" width="50" />
-          <h2>${name.official}</h2>
+          <img src="${flags.svg}" alt="${name.official}" width="230" />
+          <h2 class="title-country">${name.official}</h2>
         </div>
-        <p><span>Capital:</span> ${capital}</p>
-        <p><span>Population:</span> ${population}</p>
-        <p><span>Languages:</span> ${Object.values(languages)}</p>
+        <p class="card-p"><span class="card-title">Capital:</span> ${capital}</p>
+        <p class="card-p"><span class="card-title">Population:</span> ${population}</p>
+        <p class="card-p"><span class="card-title">Languages:</span> ${Object.values(languages).join(', ')} </p>
       </div>
     `;
 }
 
 export function countryCardList({ flags, name }) {
   return `
-    <li>
-      <img
+  <div>
+    <li class="card-list">
+      <img class="card-list-image"
         src="${flags.svg}"
          alt="${name.official}"
-         width="30" 
+         width="100"
          />
-      <p>${name.official}</p>
+      <p class="card-list-p"><em>${name.official}</p>
     </li>
+    </div>
     `;
 }
