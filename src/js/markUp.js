@@ -21,9 +21,9 @@ export function countryCardList({ flags, name }) {
       <img class="card-list-image"
         src="${flags.svg}"
          alt="${name.official}"
-         width="100"
+         width="60"
          />
-      <p class="card-list-p"><em>${name.official}</p>
+      <p class="card-list-p">${name.official}</p>
     </li>
     </div>
     `;
