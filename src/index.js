@@ -13,7 +13,7 @@ const countryInfo = document.querySelector('.country-info');
 inputBox.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput() {
-  const name = inputBox.value;
+  const name = inputBox.value.trim();
   if (name === '') {
     countryInfo.innerHTML = '';
     countryList.innerHTML = '';
