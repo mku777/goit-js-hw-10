@@ -9,39 +9,43 @@ const DEBOUNCE_DELAY = 300;
 const inputBox = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
-const name = inputBox.value;
 
 inputBox.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput() {
+  const name = inputBox.value;
   if (name === '') {
-    countryList.innerHTML = '';
     countryInfo.innerHTML = '';
+    countryList.innerHTML = '';
     return;
   }
   fetchCountries(name)
-    .then(countries => {
-      if (countries.length === 1) {
-        let mark = countries.map(country => countryСard(country));
-        countryInfo.innerHTML = mark.join('');
+    .then(countrys => {
+      if (countrys.length === 1) {
+        const markup = countrys.map(country => countryСard(country));
+        countryInfo.innerHTML = markup.join('');
         countryList.innerHTML = '';
-      } else if (countries.length <= 10) {
-        const list = countries.map(country => countryCardList(country));
-        countryList.innerHTML = list.join('');
+      }
+
+      if (countrys.length <= 10) {
+        const listMarkup = countrys.map(country => countryCardList(country));
+        countryList.innerHTML = listMarkup.join('');
         countryInfo.innerHTML = '';
-      } else if (countries.length > 10) {
+      }
+
+      if (countrys.length > 10) {
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
-        countryList.innerHTML = '';
         countryInfo.innerHTML = '';
+        countryList.innerHTML = '';
+        return;
       }
     })
-    .catch(err => {
+    .catch(error => {
       Notify.failure('Oops, there is no country with that name');
-      countryList.innerHTML = '';
       countryInfo.innerHTML = '';
+      countryList.innerHTML = '';
+      return error;
     });
 }
-
-
