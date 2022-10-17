@@ -7,7 +7,9 @@ export function countryСard({ flags, name, capital, population, languages }) {
         </div>
         <p class="card-p"><span class="card-title">Capital:</span> ${capital}</p>
         <p class="card-p"><span class="card-title">Population:</span> ${population}</p>
-        <p class="card-p"><span class="card-title">Languages:</span> ${Object.values(languages).join(', ')} </p>
+        <p class="card-p"><span class="card-title">Languages:</span> ${Object.values(
+          languages
+        ).join(', ')} </p>
       </div>
     `;
 }
